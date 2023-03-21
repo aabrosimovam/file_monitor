@@ -24,7 +24,13 @@ public:
     qint64 getFSize() const;
     bool getExistStatus() const;
 
+signals:
+    void FCreate(); //сигнал файл создали
+    void FChange(); //сигнал файл изменен
+    void FDelete(); //сигнал файл удален
 
+public slots:
+    void udFile(); // слот-прием обновленной информации о файле
 
 
 };
