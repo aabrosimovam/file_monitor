@@ -11,6 +11,7 @@ private:
 
 public:
     CheckStatus(); //конструктор по умолчанию
+    ~CheckStatus(); //деструктор
 
     //добавить и удалить файлы из списка
     void AddFile();

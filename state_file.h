@@ -32,7 +32,6 @@ signals:
 public slots:
     void udFile(); // слот-прием обновленной информации о файле
 
-
 };
 
 #endif // STATE_FILE_H
