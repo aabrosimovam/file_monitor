@@ -7,13 +7,12 @@
 
 class StateFile : public QObject
 {
-    //Q_OBJECT
+    Q_OBJECT
 private:
 
     QString FName;  //Имя файла
     qint64 FSize;   //Размер файла
     bool ExistStatus;   //Существование файла
-
 
 public:
     StateFile(); //конструктор по умолчанию
@@ -24,13 +23,11 @@ public:
     qint64 getFSize() const;
     bool getExistStatus() const;
 
-signals:
-    void FCreate(); //сигнал файл создали
-    void FChange(); //сигнал файл изменен
-    void FDelete(); //сигнал файл удален
+    //перегрузки операторов копирования присвоения и сравнения
+    StateFile(const StateFile& temp);
+    StateFile & operator =(const StateFile& temp);
+    bool operator == (const StateFile& temp) const;
 
-public slots:
-    void udFile(); // слот-прием обновленной информации о файле
 
 };
 
