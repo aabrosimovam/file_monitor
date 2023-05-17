@@ -1,9 +1,31 @@
+#include <QTimer>
+#include <QThread>
 #include <iostream>
+#include <QCoreApplication>
+#include "checkstatus.h"
+#include "file_printer.h"
+#include "state_file.h"
 
 using namespace std;
 
-int main()
+int main(int argc, char *argv[])
 {
-    cout << "Hello World!" << endl;
-    return 0;
+    QCoreApplication a(argc, argv);
+
+    CheckStatus monitor;
+    FilePrinter testprinter(monitor);
+
+    monitor.AddFile("A.txt");
+    monitor.AddFile("AA.txt");
+    monitor.AddFile("AAA.txt");
+
+    while(true)
+    {
+       //бесконечный цикл с проверкой состояния файла каждую секунду
+       QThread::msleep(1000);
+       monitor.udFile();
+    }
+
+    return a.exec();
+
 }
