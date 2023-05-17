@@ -15,7 +15,6 @@ private:
     bool ExistStatus;   //Существование файла
 
 public:
-    StateFile(); //конструктор по умолчанию
     StateFile(const QString & filename); //конструктор
 
     //геттеры для имени, размера и факта существования

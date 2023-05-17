@@ -3,17 +3,9 @@
 #include <QFileInfo>
 
 
-StateFile::StateFile() //конструктор по умолчанию на всякий случай...
-{
-    FName="";
-    FSize=0;
-    ExistStatus=0;
-}
-
-
 StateFile::StateFile(const QString &filename)
 {
-    FName=filename; //Обзываем файл
+    FName=filename; //Называем файл
     QFile file(FName); //Создаем объект QFile
     FSize = file.size(); //определяем размер файла
     ExistStatus = file.exist(); //проверяем существование
