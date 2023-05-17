@@ -15,18 +15,9 @@ int main(int argc, char *argv[])
     CheckStatus monitor;
     FilePrinter testprinter(monitor);
 
-    monitor.AddFile("D:\a.txt");
-    monitor.AddFile("D:\b.txt");
-    monitor.AddFile("D:\c.txt");
-    //monitor.AddFile('d.txt');
-
-    while(true)
-    {
-       //бесконечный цикл с проверкой состояния файла каждую секунду
-       QThread::msleep(1000);
-       monitor.udFile();
-    }
+    monitor.AddFile("A.txt");
+    monitor.AddFile("AA.txt");
+    monitor.AddFile("AAA.txt");
 
     return a.exec();
-
 }
