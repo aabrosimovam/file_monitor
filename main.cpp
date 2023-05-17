@@ -19,5 +19,13 @@ int main(int argc, char *argv[])
     monitor.AddFile("AA.txt");
     monitor.AddFile("AAA.txt");
 
+    while(true)
+    {
+       //бесконечный цикл с проверкой состояния файла каждую секунду
+       QThread::msleep(1000);
+       monitor.udFile();
+    }
+
     return a.exec();
+
 }

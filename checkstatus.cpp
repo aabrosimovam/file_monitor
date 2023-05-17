@@ -2,11 +2,7 @@
 #include <QTimer>
 
 CheckStatus::CheckStatus ()
-{
-    QTimer* timer = new QTimer(this);
-    connect (timer, &QTimer::timeout,this,&CheckStatus::udFile);
-    timer->start();
-}
+{}
 
 bool CheckStatus::AddFile(const QString & filename) //добавление файла в монитор
 {
