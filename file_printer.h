@@ -9,22 +9,32 @@ class FilePrinter : public QObject
 {
     Q_OBJECT
 
-//private:
+private:
+public:
+    //Соединяем сигналы и слоты
+    FilePrinter(CheckStatus & monitor) : mm(monitor)
+    {
+        //соединение сигнал-слот: файл добавлен в монитор
+        connect(&mm, &CheckStatus::FileAddMon, this, &FilePrinter::FP_FileAddMon);
+        //сигнал-слот: файл удален из монитора
+        connect(&mm, &CheckStatus::FileDeleteMon, this, &FilePrinter::FP_FileDeleteMon);
+        //сигнал-слот: файл был изменен
+        connect(&mm, &CheckStatus::fileChange, this, &FilePrinter::FP_fileChange);
+        //сигнал-слот: файл был создан
+        connect(&mm, &CheckStatus::fileCreate, this, &FilePrinter::FP_fileCreate);
+        //сигнал-слот: файл был удален
+        connect(&mm, &CheckStatus::fileDelete, this, &FilePrinter::FP_fileDelete);
+    }
+
 
 
 public slots:
-    /*
-    void OnFileAddedToMonitor(StateFile file); //при добавлении файла в монитор
-    void OnFileDeletedFromMonitor(StateFile file);  //при удалении файла из монитора
-    void OnFileChanged(const QString &file_name, qint64 file_size); //при изменении размера файла
-    void OnFileCreated(const QString &file_name, qint64 file_size); //при создании файла
-    void OnFileDeleted(const QString &file_name); //при удалении файла
-    */
 
-    void Exist(QString fname,qint64 size);
-    void NonExist(QString fname);
-    void Resize(QString fname, qint64 size);
-    //void FirstOut(QString path, qint64 size,bool ExistStatus);
+    void FP_FileAddMon(StateFile file); // файл добавлен под наблюдение
+    void FP_FileDeleteMon(StateFile file); // файл удален из под наблюдения
+    void FP_fileCreate(const QString &FName, qint64 FSize); // файл создали
+    void FP_fileChange(const QString &FName, qint64 FSize); // файл изменили
+    void FP_fileDelete(const QString &FName); // файл удалили
 
 };
 
