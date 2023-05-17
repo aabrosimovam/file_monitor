@@ -8,23 +8,23 @@ StateFile::StateFile(const QString &filename)
     FName=filename; //Называем файл
     QFile file(FName); //Создаем объект QFile
     FSize = file.size(); //определяем размер файла
-    ExistStatus = file.exist(); //проверяем существование
+    ExistStatus = file.exists(); //проверяем существование
 
 }
 
 //геттеры имени, размера, факта существования
 
-QString StateFile::getFName() const
+QString StateFile::getFName()
 {
     return FName;
 }
 
-QString StateFile::getFSize() const
+qint64 StateFile::getFSize()
 {
     return FSize;
 }
 
-QString StateFile::getExistStatus() const
+bool StateFile::getExistStatus()
 {
     return ExistStatus;
 }
@@ -40,9 +40,9 @@ StateFile::StateFile(const StateFile& temp) //копирования
 
 bool StateFile::operator==(const StateFile& temp) const // сравнения
 {
-    return FName = temp.FName &&
-           FSize = temp.FSize &&
-           ExistStatus = temp.ExistStatus;
+    return FName == temp.FName &&
+           FSize == temp.FSize &&
+           ExistStatus == temp.ExistStatus;
 }
 
 StateFile& StateFile::operator =(const StateFile& temp) //присваивания
@@ -56,7 +56,7 @@ StateFile& StateFile::operator =(const StateFile& temp) //присваивани
 
 //update file data
 // int, т.к в checkstatus я буду использовать switch case
-int udFile()
+int StateFile :: udFile()
 {
     /* существует ли файл сейчас?
      * если нет, но раньше да -> сигнал +
@@ -64,9 +64,9 @@ int udFile()
      * если да, но размер отличается -> сигнал +
      */
     QFile file(FName); //Создаем объект QFile
-    bool exist = file.exist();
+    bool exists = file.exists();
 
-    if (exist) //сейчас файл существует
+    if (exists) //сейчас файл существует
     {
         if (!ExistStatus) // а раньше нет
         {
@@ -74,10 +74,11 @@ int udFile()
             ExistStatus=true;
             return 0;
         }
-        else if (file.size!=FSize) //сейчас существует, раньше существовал, но размер файла изменился
+        else if (file.size()!=FSize) //сейчас существует, раньше существовал, но размер файла изменился
         {
-            FSize=file.size;
+            FSize=file.size();
             return 1;
+        }
     }
 
     else
