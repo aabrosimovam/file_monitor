@@ -14,7 +14,7 @@ bool CheckStatus::AddFile(const QString & filename) //добавление фа�
     emit FileAddMon(temp); //имит. сигнал о добавлении файла
 }
 
-bool CheckStatus::DeleteFile()
+bool CheckStatus::DeleteFile() //удаление файла из монитора
 {
     StateFile temp(filename); // новый файл для проверки
     if (objects.contains(temp))
@@ -26,7 +26,7 @@ bool CheckStatus::DeleteFile()
     return false;
 }
 
-void CheckStatus::udFile()
+void CheckStatus::udFile() //функция на обновление данных о файле
 {
     for (int i=0; i<objects.size(); i++)
     {
@@ -50,5 +50,3 @@ void CheckStatus::udFile()
 
     }
 }
-
-// нужен ли геттер на список файлов?? скорее нет, но подумать
