@@ -82,7 +82,7 @@ int StateFile :: udFile()
     }
 
     else
-        if (ExitStatus) //ситуация: сейчас не существует, но раньше существовал
+        if (ExistStatus) //ситуация: сейчас не существует, но раньше существовал
         {
             ExistStatus=false;
             return 2;

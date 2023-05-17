@@ -14,7 +14,7 @@ bool CheckStatus::AddFile(const QString & filename) //добавление фа�
     emit FileAddMon(temp); //имит. сигнал о добавлении файла
 }
 
-bool CheckStatus::DeleteFile() //удаление файла из монитора
+bool CheckStatus::DeleteFile(const QString & filename) //удаление файла из монитора
 {
     StateFile temp(filename); // новый файл для проверки
     if (objects.contains(temp))
@@ -28,20 +28,20 @@ bool CheckStatus::DeleteFile() //удаление файла из монитор
 
 void CheckStatus::udFile() //функция на обновление данных о файле
 {
-    for (int i=0; i<objects.size(); i++)
+    for (int i=0; i<objects.size(); i++) //для каждого файла проверяем данные о нем
     {
         switch (objects[i].udFile())
         {
         case 0:
-            emit FileCreate(objects[i].getFName(),objects[i].getFSize());
+            emit fileCreate(objects[i].getFName(),objects[i].getFSize());
             //сигнал о создании файла
             break;
         case 1:
-            emit FileChange(objects[i].getFName(),objects[i].getFSize());
+            emit fileChange(objects[i].getFName(),objects[i].getFSize());
             //сигнал об изменение файла
             break;
         case 2:
-            emit fileDelete(objects[i].getFName(),objects[i].getFSize());
+            emit fileDelete(objects[i].getFName());
             //сигнал об удалении файла
             break;
         case 3:

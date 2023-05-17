@@ -3,34 +3,34 @@
 // добавление файла в монитор(!)
 void FilePrinter :: FP_FileAddMon(StateFile file)
 {
-    cout<<"Файл [ "<<file.getFName().toStdString()<< " ] был добавлен в наблюдение. Его размер = "<<file.getFSize()<<endl;
+    cout<<"File [ "<<file.getFName().toStdString()<< " ] was added to MONITOR. Size = "<<file.getFSize()<<endl;
     if (file.getExistStatus())
     {
-        cout<<"Файл существует"<<endl;
+        cout<<"File exist"<<endl;
     }
-    else cout<<"Файл не существует"<<endl;
+    else cout<<"File dosn't exist"<<endl;
 }
 
 //удаление файла из монитора(!)
 void FilePrinter :: FP_FileDeleteMon(StateFile file)
 {
-    cout<<"Файл [ "<<file.getFName().toStdString()<<" ] был удален из наблюдения"<<endl;
+    cout<<"File [ "<<file.getFName().toStdString()<<" ] was deleted from MONITOR"<<endl;
 }
 
 //изменение размера файла
 void FilePrinter :: FP_fileChange(const QString &FName, qint64 FSize)
 {
-    cout<<"Размер файла [ "<<FName.toStdString()<<" ] был изменен. Новый размер = "<<FSize<<endl;
+    cout<<"Size of file [ "<<FName.toStdString()<<" ] was change. New size = "<<FSize<<endl;
 }
 
 //при создании файла
 void FilePrinter :: FP_fileCreate(const QString &FName, qint64 FSize)
 {
-    cout<<"Файл [ "<<FName.toStdString()<<" ] был создан. Его размер = "<<FSize<<endl;
+    cout<<"File [ "<<FName.toStdString()<<" ] was created. Size = "<<FSize<<endl;
 }
 
 //при удалении файла
-vois FilePrinter :: FP_fileDelete(const QString &FName)
+void FilePrinter :: FP_fileDelete(const QString &FName)
 {
-    cout<<"Файл [ "<<FName<<" ] был удален"<<endl;
+    cout<<"File [ "<<FName.toStdString()<<" ] was deleted"<<endl;
 }
