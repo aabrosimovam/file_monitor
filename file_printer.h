@@ -10,6 +10,7 @@ class FilePrinter : public QObject
     Q_OBJECT
 
 private:
+    CheckStatus &mm; // монитор для принтера
 public:
     //Соединяем сигналы и слоты
     FilePrinter(CheckStatus & monitor) : mm(monitor)
