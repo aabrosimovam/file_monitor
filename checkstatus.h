@@ -16,6 +16,8 @@ public:
     bool AddFile(const QString &filename);
     bool DeleteFile(const QString &filename);
 
+    static Monitor &Instance(); //паттерн singletone
+
 signals:
     void FileAddMon(StateFile file); // файл добавлен под наблюдение -> сигнал
     void FileDeleteMon(StateFile file); // файл удален из под наблюдения -> сигнал

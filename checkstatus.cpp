@@ -1,6 +1,12 @@
 #include "checkstatus.h"
 #include <QTimer>
 
+Monitor &Monitor::Instance()
+{
+    static Monitor object;
+    return object;
+}
+
 Monitor::Monitor ()
 {}
 
