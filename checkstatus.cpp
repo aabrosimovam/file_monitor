@@ -1,10 +1,10 @@
 #include "checkstatus.h"
 #include <QTimer>
 
-CheckStatus::CheckStatus ()
+Monitor::Monitor ()
 {}
 
-bool CheckStatus::AddFile(const QString & filename) //добавление файла в монитор
+bool Monitor::AddFile(const QString & filename) //добавление файла в монитор
 {
     StateFile temp(filename); // новый файл для проверки на наличие нужного файла
     if (objects.contains(temp))
@@ -15,7 +15,7 @@ bool CheckStatus::AddFile(const QString & filename) //добавление фа�
     emit FileAddMon(temp); //имит. сигнал о добавлении файла
 }
 
-bool CheckStatus::DeleteFile(const QString & filename) //удаление файла из монитора
+bool Monitor::DeleteFile(const QString & filename) //удаление файла из монитора
 {
     StateFile temp(filename); // новый файл для проверки
     if (objects.contains(temp))
@@ -27,7 +27,7 @@ bool CheckStatus::DeleteFile(const QString & filename) //удаление фай
     return false;
 }
 
-void CheckStatus::udFile() //функция на обновление данных о файле
+void Monitor::udFile() //функция на обновление данных о файле
 {
     for (int i=0; i<objects.size(); i++) //для каждого файла проверяем данные о нем
     {

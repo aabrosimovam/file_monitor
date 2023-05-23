@@ -2,7 +2,7 @@
 #define CHECKSTATUS_H
 #include "state_file.h"
 
-class CheckStatus : public QObject
+class Monitor : public QObject
 {
     Q_OBJECT
 private:
@@ -10,7 +10,7 @@ private:
 
 
 public:
-    CheckStatus(); //конструктор по умолчанию
+    Monitor(); //конструктор по умолчанию
 
     //добавить и удалить файлы из списка QList
     bool AddFile(const QString &filename);
