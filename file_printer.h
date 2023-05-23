@@ -27,8 +27,6 @@ public:
         connect(&mm, &CheckStatus::fileDelete, this, &FilePrinter::FP_fileDelete);
     }
 
-
-
 public slots:
 
     void FP_FileAddMon(StateFile file); // файл добавлен под наблюдение
