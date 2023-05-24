@@ -10,30 +10,30 @@ class FilePrinter : public QObject
     Q_OBJECT
 
 private:
-    CheckStatus &mm; // монитор для принтера
+    Monitor &mm; // монитор для принтера
 public:
     //Соединяем сигналы и слоты
-    FilePrinter(CheckStatus & monitor) : mm(monitor)
+    FilePrinter(Monitor & monitor) : mm(monitor)
     {
         //соединение сигнал-слот: файл добавлен в монитор
-        connect(&mm, &CheckStatus::FileAddMon, this, &FilePrinter::FP_FileAddMon);
+        connect(&mm, &Monitor::FileAddMon, this, &FilePrinter::FP_FileAddMon);
         //сигнал-слот: файл удален из монитора
-        connect(&mm, &CheckStatus::FileDeleteMon, this, &FilePrinter::FP_FileDeleteMon);
+        connect(&mm, &Monitor::FileDeleteMon, this, &FilePrinter::FP_FileDeleteMon);
         //сигнал-слот: файл был изменен
-        connect(&mm, &CheckStatus::fileChange, this, &FilePrinter::FP_fileChange);
+        connect(&mm, &Monitor::fileChange, this, &FilePrinter::FP_fileChange);
         //сигнал-слот: файл был создан
-        connect(&mm, &CheckStatus::fileCreate, this, &FilePrinter::FP_fileCreate);
+        connect(&mm, &Monitor::fileCreate, this, &FilePrinter::FP_fileCreate);
         //сигнал-слот: файл был удален
-        connect(&mm, &CheckStatus::fileDelete, this, &FilePrinter::FP_fileDelete);
+        connect(&mm, &Monitor::fileDelete, this, &FilePrinter::FP_fileDelete);
     }
 
 public slots:
 
-    void FP_FileAddMon(StateFile file); // файл добавлен под наблюдение
-    void FP_FileDeleteMon(StateFile file); // файл удален из под наблюдения
-    void FP_fileCreate(const QString &FName, qint64 FSize); // файл создали
-    void FP_fileChange(const QString &FName, qint64 FSize); // файл изменили
-    void FP_fileDelete(const QString &FName); // файл удалили
+    static void FP_FileAddMon(StateFile file); // файл добавлен под наблюдение
+    static void FP_FileDeleteMon(StateFile file); // файл удален из под наблюдения
+    static void FP_fileCreate(const QString &FName, qint64 FSize); // файл создали
+    static void FP_fileChange(const QString &FName, qint64 FSize); // файл изменили
+    static void FP_fileDelete(const QString &FName); // файл удалили
 
 };
 
