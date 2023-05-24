@@ -33,7 +33,7 @@ bool Monitor::DeleteFile(const QString & filename) //удаление файла
     return false;
 }
 
-void Monitor::udFile() //функция на обновление данных о файле
+void Monitor::updateState() //функция на обновление данных о файле
 {
     for (int i=0; i<objects.size(); i++) //для каждого файла проверяем данные о нем
     {

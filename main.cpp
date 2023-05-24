@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
     {
        //бесконечный цикл с проверкой состояния файла каждую секунду
        QThread::msleep(1000);
-       monitor.udFile();
+       monitor.updateState();
     }
 
     return a.exec();

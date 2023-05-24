@@ -26,7 +26,7 @@ signals:
     void fileDelete(const QString &FName); // файл удалили -> сигнал
 
 public slots:
-    void udFile();
+    void updateState();
 
 };
 

@@ -9,22 +9,20 @@ class FilePrinter : public QObject
 {
     Q_OBJECT
 
-private:
-    Monitor &mm; // монитор для принтера
 public:
     //Соединяем сигналы и слоты
-    FilePrinter(Monitor & monitor) : mm(monitor)
+    FilePrinter(Monitor & monitor)
     {
         //соединение сигнал-слот: файл добавлен в монитор
-        connect(&mm, &Monitor::FileAddMon, this, &FilePrinter::FP_FileAddMon);
+        connect(&monitor, &Monitor::FileAddMon, &FilePrinter::FP_FileAddMon);
         //сигнал-слот: файл удален из монитора
-        connect(&mm, &Monitor::FileDeleteMon, this, &FilePrinter::FP_FileDeleteMon);
+        connect(&monitor, &Monitor::FileDeleteMon, &FilePrinter::FP_FileDeleteMon);
         //сигнал-слот: файл был изменен
-        connect(&mm, &Monitor::fileChange, this, &FilePrinter::FP_fileChange);
+        connect(&monitor, &Monitor::fileChange, &FilePrinter::FP_fileChange);
         //сигнал-слот: файл был создан
-        connect(&mm, &Monitor::fileCreate, this, &FilePrinter::FP_fileCreate);
+        connect(&monitor, &Monitor::fileCreate, &FilePrinter::FP_fileCreate);
         //сигнал-слот: файл был удален
-        connect(&mm, &Monitor::fileDelete, this, &FilePrinter::FP_fileDelete);
+        connect(&monitor, &Monitor::fileDelete, &FilePrinter::FP_fileDelete);
     }
 
 public slots:
