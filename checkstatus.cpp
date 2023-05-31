@@ -7,9 +7,6 @@ Monitor &Monitor::Instance()
     return object;
 }
 
-Monitor::Monitor ()
-{}
-
 bool Monitor::AddFile(const QString & filename) //добавление файла в монитор
 {
     StateFile temp(filename); // новый файл для проверки на наличие нужного файла

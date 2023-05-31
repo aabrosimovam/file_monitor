@@ -6,11 +6,10 @@ class Monitor : public QObject
 {
     Q_OBJECT
 private:
+
     QList<StateFile> objects; // список самих files
 
-
 public:
-    Monitor(); //конструктор по умолчанию
 
     //добавить и удалить файлы из списка QList
     bool AddFile(const QString &filename);
