@@ -12,7 +12,8 @@ int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
 
-    Monitor monitor;
+    Monitor &monitor = Monitor::Instance();
+    //Monitor monitor;
     FilePrinter testprinter(monitor);
 
     monitor.AddFile("A.txt");

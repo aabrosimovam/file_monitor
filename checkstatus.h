@@ -7,6 +7,11 @@ class Monitor : public QObject
     Q_OBJECT
 private:
 
+    Monitor() {}; //конструктор не доступен
+    ~Monitor() {}; //как и деструктор
+    Monitor(Monitor const&);
+    Monitor &operator = (Monitor const&); //запрещаем копирование
+
     QList<StateFile> objects; // список самих files
 
 public:
